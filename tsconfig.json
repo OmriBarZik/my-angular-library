@@ -11,6 +11,11 @@
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
+    "paths": {
+      "my-angular-library": [
+        "./dist/my-angular-library"
+      ]
+    },
     "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
