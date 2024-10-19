@@ -1,6 +1,11 @@
 {
-  "name": "my-angular-library",
-  "version": "0.0.1",
+  "name": "@omribarzik/my-angular-library",
+  "version": "1.0.6",
+  "scripts": {
+    "prepublish": "npm version patch && cd ../.. && npm run build",
+    "build": "tsc -p tsconfig.schematics.json",
+    "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json schematics/migration.json ../../dist/my-angular-library/"
+  },
   "peerDependencies": {
     "@angular/common": "^18.2.0",
     "@angular/core": "^18.2.0"
@@ -8,5 +13,15 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "devDependencies": {
+    "copyfiles": "file:../../node_modules/copyfiles",
+    "typescript": "file:../../node_modules/typescript"
+  },
+  "ng-update": {
+    "migrations": "./schematics/migration.json",
+    "packageGroup": [
+      "@angular/cdk"
+    ]
+  }
 }
